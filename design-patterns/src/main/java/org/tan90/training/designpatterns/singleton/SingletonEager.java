@@ -1,4 +1,4 @@
-package org.tan90.training.designpatterns;
+package org.tan90.training.designpatterns.singleton;
 
 public class SingletonEager {
     
