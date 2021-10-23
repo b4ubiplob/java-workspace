@@ -11,32 +11,33 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 @RunWith(value = Parameterized.class)
-public class FibonacciTest {
+public class GridTravellerTest {
 	
-	private int number;
+	private int number1;
+	private int number2;
 	private long expected;
 	
-	public FibonacciTest(int number, long expected) {
-		this.number = number;
+	public GridTravellerTest(int number1, int number2, long expected) {
+		this.number1 = number1;
+		this.number2 = number2;
 		this.expected = expected;
 	}
 	
 	@Parameters
 	public static Collection<Object[]> data() {
 		return Arrays.asList(new Object[][] {
-			{6, 8},
-			{7, 13},
-			{8, 21},
-			{50, 12586269025L}
+			{1,1,1},
+			{2,3,3},
+			{3,2,3},
+			{3,3,6},
+			{18,18,2333606220L}
 		});
 	}
 	
 	@Test
-	public void testFibonacci1() {
-		long result = Fibonacci.fibonacci(number);
+	public void testCalculate1() {
+		long result = GridTraveller.calculate(number1, number2);
 		assertEquals(expected, result);
 	}
-	
-	
 
 }
