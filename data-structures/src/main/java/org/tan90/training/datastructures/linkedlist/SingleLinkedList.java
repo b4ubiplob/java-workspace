@@ -1,7 +1,6 @@
 package org.tan90.training.datastructures.linkedlist;
 
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 public class SingleLinkedList {
@@ -21,6 +20,18 @@ public class SingleLinkedList {
         }
 
         current.setNext(new LinkedListNode(value));
+    }
+
+    public void addNode(LinkedListNode node) {
+        if (start == null) {
+            start = node;
+        }
+
+        LinkedListNode current = start;
+        while (current.getNext() != null) {
+            current = current.getNext();
+        }
+        current.setNext(node);
     }
 
     public String getLinkedList() {
@@ -61,12 +72,30 @@ public class SingleLinkedList {
     	while (fast != null) {
     		fast = fast.getNext();
     		if (fast == null) {
-    			return slow.getValue();
+    			break;
     		}
     		fast = fast.getNext();
     		slow = slow.getNext();
     	}
     	return slow.getValue();
+    }
+
+    public boolean detectLoop() {
+        LinkedListNode fast = start;
+        LinkedListNode slow = start;
+
+        while (fast != null) {
+            fast = fast.getNext();
+            if (fast == null) {
+                return false;
+            }
+            fast = fast.getNext();
+            if (fast == slow) {
+                return true;
+            }
+            slow = slow.getNext();
+        }
+        return false;
     }
     
     public void removeDuplicates() {
