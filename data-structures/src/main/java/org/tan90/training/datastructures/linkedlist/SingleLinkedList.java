@@ -1,5 +1,9 @@
 package org.tan90.training.datastructures.linkedlist;
 
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
 public class SingleLinkedList {
     
     private LinkedListNode start;
@@ -50,4 +54,40 @@ public class SingleLinkedList {
     
     }
 
+    public int getMiddleElement() {
+    	LinkedListNode slow = start;
+    	LinkedListNode fast = start;
+    	
+    	while (fast != null) {
+    		fast = fast.getNext();
+    		if (fast == null) {
+    			return slow.getValue();
+    		}
+    		fast = fast.getNext();
+    		slow = slow.getNext();
+    	}
+    	return slow.getValue();
+    }
+    
+    public void removeDuplicates() {
+    	Set<Integer> numbers = new HashSet<>();
+    	
+    	LinkedListNode current = start;
+    	LinkedListNode previousNode = null;
+    	
+    	while (current != null) {
+    		int num = current.getValue();
+    		if (numbers.contains(num)) {
+    			LinkedListNode nextNode = current.getNext();
+    			previousNode.setNext(nextNode);
+    			current = nextNode;
+    		}
+    		else {
+    			numbers.add(num);
+    			previousNode = current;
+    			current = current.getNext();
+    		}
+    	
+    	}
+    }
 }
