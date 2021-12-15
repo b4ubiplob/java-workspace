@@ -34,7 +34,7 @@ private BinaryTreeNode top;
     public String getInorderTraversalTree() {
         return inOrderTraversal(top, "");
     }
-    
+
     private String inOrderTraversal(BinaryTreeNode node, String str) {
         String str2 = "";
         if (node != null) {
