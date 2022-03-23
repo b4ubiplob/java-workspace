@@ -64,4 +64,19 @@ public class TestStringUtil {
         assertFalse(StringUtil.checkIfPermutionPalindrome(str));
     }
     
+    
+    @Test
+    public void testLengthOfLongestSubstring() {
+    	String str = "abcabcbb";
+    	assertEquals(3, StringUtil.lengthOfLongestSubstring(str));
+    	
+    	str = "bbbbb";
+    	assertEquals(1, StringUtil.lengthOfLongestSubstring(str));
+    	
+    	str = "pwwkew";
+    	assertEquals(3, StringUtil.lengthOfLongestSubstring(str));
+    	
+    	str = "dvdf";
+    	assertEquals(3, StringUtil.lengthOfLongestSubstring(str));
+    }
 }

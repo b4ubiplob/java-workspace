@@ -83,6 +83,35 @@ public class StringUtil {
         return true;
     }
 
-    
+    public static int lengthOfLongestSubstring(String str) {
+    	int maxLength = 0;
+    	if (str.length() == 0 || str.length() == 1) {
+    		return str.length();
+    	}
+    	int start = 0, end= 0;
+    	Map<Character, Integer> characterMap  = new HashMap<>();
+    	
+    	while (end < str.length()) {
+    		
+    		if (characterMap.containsKey(str.charAt(end))) {
+    			
+    			if ((end - start) > maxLength) {
+    				maxLength = end-start;
+    			}
+    			start = characterMap.get(str.charAt(end)) + 1;
+    			final int value = start;
+    			characterMap.entrySet().removeIf(entry -> entry.getValue() < value);
+    		}
+    		else {
+    			characterMap.put(str.charAt(end), end);
+        		end++;
+    		}
+    	}
+    	if ((end - start) > maxLength) {
+			maxLength = end-start;
+		}
+    	
+    	return maxLength;
+    }
 
 }
