@@ -23,5 +23,24 @@ public class TestSampleProblems {
 		assertEquals(0, num);
 		
 	}
+	
+	@Test
+	public void testmyAtoI() {
+		SampleProblems sampleProblems = new SampleProblems();
+		
+		int num = sampleProblems.myAtoi("42");
+		assertEquals(42, num);
+		
+		num = sampleProblems.myAtoi("    -42");
+		assertEquals(-42, num);
+		
+		num = sampleProblems.myAtoi("4193 with words");
+		assertEquals(4193, num);
+		
+		num = sampleProblems.myAtoi("9223372036854775808");
+		assertEquals(2147483647, num);
+		
+		
+	}
 
 }
