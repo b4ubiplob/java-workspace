@@ -127,5 +127,31 @@ public class TestSingleLinkedList {
 
 
      }
+     
+     
+     @Test
+     public void testMergeTwoLists() {
+    	 SingleLinkedList singleLinkedList1 = new SingleLinkedList();
+    	 singleLinkedList1.addNode(1);
+    	 singleLinkedList1.addNode(2);
+    	 singleLinkedList1.addNode(4);
+    	 
+    	 assertEquals("1->2->4->", singleLinkedList1.getLinkedList());
+    	 
+    	 SingleLinkedList singleLinkedList2 = new SingleLinkedList();
+    	 singleLinkedList2.addNode(1);
+    	 singleLinkedList2.addNode(3);
+    	 singleLinkedList2.addNode(4);
+    	 
+    	 assertEquals("1->3->4->", singleLinkedList2.getLinkedList());
+
+    	 LinkedListNode node = new SingleLinkedList().mergeTwoLists(singleLinkedList1.getStart(), singleLinkedList2.getStart());
+    	 
+    	 SingleLinkedList linkedList = new SingleLinkedList();
+    	 linkedList.setStart(node);
+    	 
+    	 assertEquals("1->1->2->3->4->4->", linkedList.getLinkedList());
+
+     }
 
 }

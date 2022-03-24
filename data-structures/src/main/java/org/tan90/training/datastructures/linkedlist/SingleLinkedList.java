@@ -7,6 +7,14 @@ public class SingleLinkedList {
     
     private LinkedListNode start;
 
+    public LinkedListNode getStart() {
+    	return start;
+    }
+    
+    public void setStart(LinkedListNode node) {
+    	start = node;
+    }
+    
     public void addNode(int value) {
         if (start == null) {
             start = new LinkedListNode(value);
@@ -118,5 +126,52 @@ public class SingleLinkedList {
     		}
     	
     	}
+    }
+
+    public LinkedListNode mergeTwoLists(LinkedListNode list1, LinkedListNode list2) {
+    	
+    	if (list1 == null) {
+    		return list2;
+    	}
+    	if (list2 == null) {
+    		return list1;
+    	}
+    	LinkedListNode start = null;
+    	LinkedListNode current = null;
+    	while (list1 != null && list2 != null) {
+    		if (current == null) {
+        		current = new LinkedListNode();
+        		start = current;
+    		}
+    		else {
+    			LinkedListNode newNode = new LinkedListNode();
+    			current.setNext(newNode);
+    			current = current.getNext();
+    		}
+    		if (list1.getValue() > list2.getValue()) {
+    			current.setValue(list2.getValue());
+    			list2 = list2.getNext();
+    		}
+    		else {
+    			current.setValue(list1.getValue());
+    			list1 = list1.getNext();
+    		}
+    		
+    	}
+		while (list1 != null) {
+			LinkedListNode newNode = new LinkedListNode(list1.getValue());
+			current.setNext(newNode);
+			current = current.getNext();
+			list1 = list1.getNext();
+		}
+    	
+    	while (list2 != null) {
+    		LinkedListNode newNode = new LinkedListNode(list2.getValue());
+    		current.setNext(newNode);
+    		current = current.getNext();
+    		list2 = list2.getNext();
+    	}
+    	return start;
+    	
     }
 }

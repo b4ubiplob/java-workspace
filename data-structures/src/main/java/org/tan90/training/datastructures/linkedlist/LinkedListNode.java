@@ -5,6 +5,8 @@ public class LinkedListNode {
     private int value;
     private LinkedListNode next;
     
+    public LinkedListNode() {}
+    
     public LinkedListNode(int value) {
         this.value = value;
         next = null;
