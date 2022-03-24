@@ -1,6 +1,8 @@
 package org.tan90.training.algorithms.misc;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -41,6 +43,14 @@ public class TestSampleProblems {
 		assertEquals(2147483647, num);
 		
 		
+	}
+	
+	@Test
+	public void testContainsDuplicates() {
+		SampleProblems sampleProblems = new SampleProblems();
+		
+		int[] arr = new int[] {1,2,3,1};
+		assertTrue(sampleProblems.containsDuplicate(arr));
 	}
 
 }

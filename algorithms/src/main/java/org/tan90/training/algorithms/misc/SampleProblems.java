@@ -1,5 +1,11 @@
 package org.tan90.training.algorithms.misc;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 public class SampleProblems {
 	
 	public int reverse(int x) {
@@ -70,4 +76,12 @@ public class SampleProblems {
 		
 		return (int) num;
 	}
+
+	public boolean containsDuplicate(int[] nums) {
+       
+        List<Integer> numbers = Arrays.stream(nums).boxed().collect(Collectors.toList());
+        Set<Integer> set = new HashSet<>(numbers);
+        return (set.size() != nums.length);
+      
+    }
 }
