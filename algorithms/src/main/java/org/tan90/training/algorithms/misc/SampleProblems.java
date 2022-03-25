@@ -78,10 +78,20 @@ public class SampleProblems {
 	}
 
 	public boolean containsDuplicate(int[] nums) {
-       
         List<Integer> numbers = Arrays.stream(nums).boxed().collect(Collectors.toList());
         Set<Integer> set = new HashSet<>(numbers);
         return (set.size() != nums.length);
-      
     }
+	
+	public void merge(int[] nums1, int m, int[] nums2, int n) {
+		
+		int j = 0;
+		for (int i = m; m < (m+n); i++) {
+			nums1[i] = nums2[j]; 
+			j++;
+		}
+		
+		Arrays.sort(nums1);
+        
+    } 
 }
