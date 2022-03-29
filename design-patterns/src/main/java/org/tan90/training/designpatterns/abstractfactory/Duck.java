@@ -7,7 +7,7 @@ public class Duck implements Animal {
         return "Duck";
     }
 
-    @java.lang.Override
+    @Override
     public String makeSound() {
         return "Duck noise";
     }
