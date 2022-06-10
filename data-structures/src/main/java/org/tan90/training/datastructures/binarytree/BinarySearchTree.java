@@ -2,7 +2,7 @@ package org.tan90.training.datastructures.binarytree;
 
 public class BinarySearchTree {
     
-private BinaryTreeNode top;
+    private BinaryTreeNode top;
     
     public void addNode(int value) {
         if (top == null) {
