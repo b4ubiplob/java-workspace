@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.List;
+
 import org.junit.Test;
 
 public class TestSampleProblems {
@@ -53,4 +55,19 @@ public class TestSampleProblems {
 		assertTrue(sampleProblems.containsDuplicate(arr));
 	}
 
+	@Test
+	public void testGetEvenNumbers() {
+		SampleProblems sampleProblems = new SampleProblems();
+		List<Integer> numbers = sampleProblems.getEvenNumbers();
+		assertEquals(4, numbers.size());
+		assertEquals(10, (int) numbers.get(0));
+	}
+
+	@Test
+	public void testGetMumbersStaringFromOne() {
+		SampleProblems sampleProblems = new SampleProblems();
+		List<Integer> numbers = sampleProblems.getNumbersStartingFromOne();
+		assertEquals(2, numbers.size());
+		assertEquals(10, (int) numbers.get(0));
+	}
 }
