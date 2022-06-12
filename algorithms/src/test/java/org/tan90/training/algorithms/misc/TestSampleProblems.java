@@ -70,4 +70,35 @@ public class TestSampleProblems {
 		assertEquals(2, numbers.size());
 		assertEquals(10, (int) numbers.get(0));
 	}
+	
+	@Test
+	public void testAnagrams() {
+		SampleProblems sampleProblems = new SampleProblems();
+		String str1 = "nameless";
+		String str2 = "salesmen";
+		assertTrue(sampleProblems.isAnagram(str1, str2));
+		
+		str1 = "nameless";
+		str2 = "salesmbn";
+		assertFalse(sampleProblems.isAnagram(str1, str2));
+	}
+	
+	@Test
+	public void testFindFirstAndLast() {
+		SampleProblems sampleProblems = new SampleProblems();
+		int[] arr = {2,4,5,5,5,5,5,7,9,9};
+		int[] result  = sampleProblems.findFirstAndLast(arr, 5);
+		assertEquals(2, result.length);
+		assertEquals(2, result[0]);
+		assertEquals(6, result[1]);
+	}
+	
+	@Test
+	public void testKthLargest() {
+		Integer[] arr = {1,2,3,4,5,6,7,7,9};
+		SampleProblems sampleProblems = new SampleProblems();
+		int result = sampleProblems.kthLargest(arr, 4);
+		assertEquals(6, result);
+		
+	}
 }

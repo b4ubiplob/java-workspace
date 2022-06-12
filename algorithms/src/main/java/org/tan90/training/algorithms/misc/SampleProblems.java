@@ -1,10 +1,16 @@
 package org.tan90.training.algorithms.misc;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.PriorityQueue;
 import java.util.Set;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class SampleProblems {
@@ -96,7 +102,6 @@ public class SampleProblems {
         
     } 
 
-
 	public List<Integer> getEvenNumbers() {
 		List<Integer> myList = Arrays.asList(10,15,8,49,25,98,32);
 		return myList.stream().filter(n -> n%2 == 0).collect(Collectors.toList());
@@ -135,4 +140,106 @@ public class SampleProblems {
 		List<Integer> myList = Arrays.asList(10,15,8,49,25,98,98,32,15);
 		return myList.stream().max(Integer::compare).get();
 	}
+
+	public boolean isAnagram(String str1, String str2) {
+		if (str1.length() != str2.length()) {
+			return false;
+		}
+		
+		Map<Character, Integer> count1 = getCharacterCountMap(str1);
+		Map<Character, Integer> count2 = getCharacterCountMap(str2);
+
+		for (Map.Entry<Character, Integer> entry : count1.entrySet()) {
+			if ( !(count2.containsKey(entry.getKey()) && 
+					count2.get(entry.getKey()).equals(entry.getValue()))) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	private Map<Character, Integer> getCharacterCountMap(String str) {
+		Map<Character, Integer> count1 = new HashMap<>();
+		for (int i = 0; i < str.length(); i++) {
+			if (count1.containsKey(str.charAt(i))) {
+				count1.put(str.charAt(i), count1.get(str.charAt(i)) + 1);
+			}
+			else {
+				count1.put(str.charAt(i), 1);
+			}
+		}
+		return count1;
+	}
+	
+	public int[] findFirstAndLast(int[] arr, int target) {
+		
+		if (arr.length == 0 || target < arr[0] || target > arr[arr.length - 1]) {
+			return new int[] {-1, -1};
+		}
+		
+		int start = findStartPosition(arr, target);
+		int end = findEndPosition(arr, target);
+		
+		return new int[] {start, end};
+		
+	}
+	
+	private int findStartPosition(int[] arr, int target) {
+		int start = 0;
+		int end = arr.length - 1;
+		int mid = -1;
+		while (start <= end) {
+			mid = (start + end) / 2;
+			if (arr[mid] == target && arr[mid - 1] < target) {
+				return mid;
+			}
+			else if (arr[mid] >= target) {
+				end = mid - 1;
+			}
+			else {
+				start = mid + 1;
+			}
+		}
+		
+		return -1;
+		
+	}
+	
+	private int findEndPosition(int[] arr, int target) {
+		int start = 0;
+		int end = arr.length - 1;
+		int mid = -1;
+		while (start <= end) {
+			mid = (start + end) / 2;
+			if (arr[mid] == target && arr[mid + 1] > target) {
+				return mid;
+			}
+			else if (arr[mid] > target) {
+				end = mid - 1;
+			}
+			else {
+				start = mid + 1;
+			}
+		}
+		
+		return -1;
+		
+	}
+	
+	public int kthLargest(Integer[] arr, int k) {
+		if (k > arr.length) {
+			return -1;
+		}
+		Comparator<Integer> comparator = Comparator.reverseOrder();
+ 		PriorityQueue<Integer> priorityQueue = new PriorityQueue<Integer>(comparator);
+ 		priorityQueue.addAll(Arrays.asList(arr));
+ 		
+ 		int num  = -1;
+ 		for (int i = 0; i < k ;i++) {
+ 			num = priorityQueue.poll();
+ 		}
+ 		return num;
+	}
+	
+	
 }

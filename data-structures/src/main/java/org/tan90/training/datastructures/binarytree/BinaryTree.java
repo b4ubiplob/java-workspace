@@ -155,4 +155,34 @@ public class BinaryTree {
 
         return Math.max(node.getValue() + getMaxRootToLeafPathSum(node.getLeft()), node.getValue() + getMaxRootToLeafPathSum(node.getRight()));
     }
+    
+    public boolean isSymmetric() {
+    	if (root == null) {
+    		return false;
+    	}
+    	
+    	return isSymmetric(root.getLeft(), root.getRight());
+    	
+    }
+    
+    private boolean isSymmetric(BinaryTreeNode root1, BinaryTreeNode root2) {
+		if (root1 == null && root2 == null) {
+			return true;
+		}
+		
+		if (root1 == null && root2 != null) {
+			return false;
+		}
+		
+		if (root1 != null && root2 == null) {
+			return false;
+		}
+		
+		if (root1.getValue() != root2.getValue()) {
+			return false;
+		}
+		else {
+			return isSymmetric(root1.getLeft(), root2.getRight()) && isSymmetric(root2.getLeft(), root1.getRight());
+		}
+	}
 }
