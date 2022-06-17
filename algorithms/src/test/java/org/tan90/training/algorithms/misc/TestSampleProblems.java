@@ -101,4 +101,14 @@ public class TestSampleProblems {
 		assertEquals(6, result);
 		
 	}
+	
+	@Test
+	public void testGasStationProblem() {
+		int[] gas = {1,5,3,3,5,3,1,3,4,5};
+		int[] cost = {5,2,2,8,2,4,2,5,1,2};
+		
+		SampleProblems sampleProblems = new SampleProblems();
+		int result = sampleProblems.gasStationProblem(gas, cost);
+		assertEquals(8, result);
+	}
 }
