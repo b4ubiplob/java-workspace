@@ -111,4 +111,40 @@ public class TestSampleProblems {
 		int result = sampleProblems.gasStationProblem(gas, cost);
 		assertEquals(8, result);
 	}
+	
+	@Test
+	public void testInterSect() {
+		int[] nums1 = new int[] {1,2,2,1};
+		int[] nums2 = new int[] {2,2};
+		
+		SampleProblems sampleProblems = new SampleProblems();
+		int[] result = sampleProblems.intersect(nums1, nums2);
+		assertEquals(2, result.length);
+		assertEquals(2, result[0]);
+		assertEquals(2, result[1]);
+		
+		
+		nums1 = new int[] {1};
+		nums2 = new int[] {1};
+		
+		result = sampleProblems.intersect(nums1, nums2);
+		assertEquals(1, result.length);
+		assertEquals(1, result[0]);
+		
+
+		nums1 = new int[] {4, 9, 5};
+		nums2 = new int[] {9,4,9,8,4};
+		
+		result = sampleProblems.intersect(nums1, nums2);
+		assertEquals(2, result.length);
+ 	}
+	
+	@Test
+	public void testMaxProfit() {
+		int[] prices = new int[] {7,1,5,3,6,4};
+		
+		SampleProblems sampleProblems = new SampleProblems();
+		
+		assertEquals(5, sampleProblems.maxProfit(prices));
+	}
 }

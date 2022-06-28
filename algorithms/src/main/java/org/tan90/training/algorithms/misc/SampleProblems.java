@@ -1,5 +1,6 @@
 package org.tan90.training.algorithms.misc;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
@@ -10,7 +11,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.PriorityQueue;
 import java.util.Set;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class SampleProblems {
@@ -252,5 +252,53 @@ public class SampleProblems {
 		return result;
 	}
 	
+	public int[] intersect(int[] nums1, int[] nums2) {
+		Map<Integer, Integer> map = new HashMap<>();
+		
+		for (int i= 0; i < nums1.length; i++) {
+			if (map.containsKey(nums1[i])) {
+				map.put(nums1[i], map.get(nums1[i]) + 1);
+			}
+			else {
+				map.put(nums1[i], 1);
+			}
+		}
+		
+		List<Integer> result = new ArrayList<Integer>();
+	 	for (int j = 0; j < nums2.length; j++) {
+			if (map.containsKey(nums2[j]) && map.get(nums2[j]) > 0) {
+				int num = map.get(nums2[j]);
+				result.add(nums2[j]);
+				map.put(nums2[j], num - 1);
+			}
+		}
+	 	int[] nums = new int[result.size()];
+	 	for (int i = 0; i < nums.length; i++) {
+	 		nums[i] = result.get(i);
+	 	}
+		return nums;
+	}
+	
+	public int maxProfit(int[] prices) {
+		
+		int maxProfit = 0;
+		int min  = prices[0];
+		int profit = 0;
+		for (int i = 1; i < prices.length; i++) {
+			
+			if (prices[i] > min) {
+				profit = prices[i] - min;
+			}
+			else {
+				min  = prices[i];
+			}
+			
+			if (maxProfit < profit) {
+				maxProfit = profit;
+			}
+			
+		}
+		return maxProfit;
+	}
 	
 }
