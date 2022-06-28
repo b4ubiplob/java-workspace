@@ -242,5 +242,33 @@ public class TestGraphSearch {
 	
 	}
 	
+	@Test
+	public void testCourseSchedule() {
+		int[][] edgeList = {
+				{0,1},
+				{3,0},
+				{1,3},
+				{2,1},
+				{4,1},
+				{4,2},
+				{5,3},
+				{5,4}
+		};
+		
+		assertFalse(GraphSearch.courseSchedule(edgeList));
+		
+		int[][] edgeList2 = {
+				{3,0},
+				{1,3},
+				{2,1},
+				{4,1},
+				{4,2},
+				{5,3},
+				{5,4}
+		};
+		
+		assertTrue(GraphSearch.courseSchedule(edgeList2));
+	}
+	
 	
 }

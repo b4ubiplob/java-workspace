@@ -1,10 +1,13 @@
 package org.tan90.training.datastructures.graph;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Queue;
@@ -287,6 +290,60 @@ public class GraphSearch {
 			}
 		}
 		return minimum;
+	}
+	
+	public static boolean courseSchedule(int[][] edgeList) {
+		Map<Integer, List<Integer>> graph = getAdjacencyList(edgeList);
+		Set<Integer> visitedNodes = new HashSet<>();
+		Set<Integer> sortedNodes = new LinkedHashSet<>();
+		
+		for (int node : graph.keySet()) {
+			
+			if (!visitedNodes.contains(node)) {
+				
+				Stack<Integer> stack = new Stack<>();
+				stack.push(node);
+				while (!stack.isEmpty()) {
+					int currentNode = stack.pop();
+					visitedNodes.add(currentNode);
+					sortedNodes.add(currentNode);
+					for (int neighbours : graph.get(currentNode)) {
+						if (sortedNodes.contains(neighbours)) {
+							return false;
+						}
+						else {
+							stack.push(neighbours);
+						}
+					}
+				}
+			}
+			
+		}
+		
+		return true;
+	}
+	
+	private static Map<Integer, List<Integer>> getAdjacencyList(int[][] edgeList) {
+		
+		Map<Integer, List<Integer>> adjacencyList = new HashMap<>();
+		
+		for (int i = 0; i < edgeList.length; i++) {
+			
+			if (adjacencyList.containsKey(edgeList[i][1])) {
+				adjacencyList.get(edgeList[i][1]).add(edgeList[i][0]);
+			}
+			else {
+				List<Integer> edges = new ArrayList<>();
+				edges.add(edgeList[i][0]);
+				adjacencyList.put(edgeList[i][1], edges);
+			}
+			
+			if (!adjacencyList.containsKey(edgeList[i][0])) {
+				adjacencyList.put(edgeList[i][0], new ArrayList<Integer>());
+			}
+		}
+		
+		return adjacencyList;
 	}
 
 }
