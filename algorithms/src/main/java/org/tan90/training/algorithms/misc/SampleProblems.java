@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -171,6 +172,29 @@ public class SampleProblems {
 		return count1;
 	}
 	
+	public boolean canConstruct(String ransomNote, String magazine) {
+		if (ransomNote.length() > magazine.length()) {
+			return false;
+		}
+		
+		Map<Character, Integer> ransomCount = getCharacterCountMap(ransomNote);
+		Map<Character, Integer> magazineCount = getCharacterCountMap(magazine);
+
+		for (Map.Entry<Character, Integer> entry : ransomCount.entrySet()) {
+			
+			if (!magazineCount.containsKey(entry.getKey())) {
+				return false;
+			}
+			
+			if (magazineCount.get(entry.getKey()) < entry.getValue()) {
+				return false;
+			}
+			
+		}
+		return true;
+	}
+	
+	
 	public int[] findFirstAndLast(int[] arr, int target) {
 		
 		if (arr.length == 0 || target < arr[0] || target > arr[arr.length - 1]) {
@@ -299,6 +323,30 @@ public class SampleProblems {
 			
 		}
 		return maxProfit;
+	}
+
+	public int firstUniqChar(String str) {
+		Map<Character, Integer> countMap = getCharacterCountLinkedMap(str);
+		
+		for (Map.Entry<Character, Integer> entry : countMap.entrySet()) {
+			if (entry.getValue() == 1) {
+				return str.indexOf(entry.getKey());
+			}
+		}
+		return -1;
+	}
+	
+	private Map<Character, Integer> getCharacterCountLinkedMap(String str) {
+		Map<Character, Integer> count1 = new LinkedHashMap<>();
+		for (int i = 0; i < str.length(); i++) {
+			if (count1.containsKey(str.charAt(i))) {
+				count1.put(str.charAt(i), count1.get(str.charAt(i)) + 1);
+			}
+			else {
+				count1.put(str.charAt(i), 1);
+			}
+		}
+		return count1;
 	}
 	
 }

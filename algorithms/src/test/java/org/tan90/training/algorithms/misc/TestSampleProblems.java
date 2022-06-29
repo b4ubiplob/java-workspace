@@ -147,4 +147,34 @@ public class TestSampleProblems {
 		
 		assertEquals(5, sampleProblems.maxProfit(prices));
 	}
+	
+	@Test
+	public void testCanConstruct() {
+		String ransomeNote = "sample";
+		String magazine = "sampleproblem";
+		
+		SampleProblems sampleProblems = new SampleProblems();
+		assertTrue(sampleProblems.canConstruct(ransomeNote, magazine));
+		
+		ransomeNote = "sample";
+		magazine = "samlem";
+		assertFalse(sampleProblems.canConstruct(ransomeNote, magazine));
+
+	}
+	
+	@Test
+	public void testFirstUniqueCharacter() {
+		String str = "leetcode";
+		SampleProblems sampleProblems = new SampleProblems();
+		
+		assertEquals(0, sampleProblems.firstUniqChar(str));
+		
+		str = "loveleetcode";
+		assertEquals(2, sampleProblems.firstUniqChar(str));
+		
+		str = "aabb";
+		assertEquals(-1, sampleProblems.firstUniqChar(str));
+
+
+	}
 }
