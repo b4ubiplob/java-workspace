@@ -177,4 +177,15 @@ public class TestSampleProblems {
 
 
 	}
+	
+	@Test
+	public void testPalindrome() {
+		SampleProblems sampleProblems = new SampleProblems();
+		assertTrue(sampleProblems.isPalindrome(121));
+		
+		assertFalse(sampleProblems.isPalindrome(-121));
+		assertFalse(sampleProblems.isPalindrome(10));
+
+		
+	}
 }

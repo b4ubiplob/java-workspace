@@ -349,4 +349,10 @@ public class SampleProblems {
 		return count1;
 	}
 	
+	public boolean isPalindrome(int x) {
+		String xString = String.valueOf(x);
+		StringBuilder sb = new StringBuilder(xString);
+		String yString = sb.reverse().toString();
+		return xString.equals(yString);
+	}
 }
