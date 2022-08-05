@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.PriorityQueue;
 import java.util.Set;
+import java.util.Stack;
 import java.util.stream.Collectors;
 
 public class SampleProblems {
@@ -355,4 +356,32 @@ public class SampleProblems {
 		String yString = sb.reverse().toString();
 		return xString.equals(yString);
 	}
+	
+	
+	public boolean isValid(String s) {
+        Map<Character, Character> parentheseMap = new HashMap<>();
+        parentheseMap.put('(', ')');
+        parentheseMap.put('{', '}');
+        parentheseMap.put('[', ']');
+        
+        Stack<Character> charStack = new Stack<>();
+        for (int i = 0 ; i < s.length(); i++) {
+        	char ch = s.charAt(i);
+        	if (parentheseMap.containsKey(ch)) {
+        		charStack.push(ch);
+        	}
+        	else {
+        		if (charStack.isEmpty()) {
+        			return false;
+        		}
+        		Character ch1 = charStack.pop();
+        		if (!parentheseMap.get(ch1).equals(ch)) {
+        			return false;
+        		}
+        	}
+        }
+        return charStack.isEmpty();
+    }
+	
+	
 }

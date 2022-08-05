@@ -188,4 +188,20 @@ public class TestSampleProblems {
 
 		
 	}
+	
+	@Test
+	public void testValidPrentheses() {
+		String input = "()";
+		
+		SampleProblems sampleProblems = new SampleProblems();
+		assertTrue(sampleProblems.isValid(input));
+		
+		input = "()[]{}";
+		assertTrue(sampleProblems.isValid(input));
+
+		input = "(]";
+		assertFalse(sampleProblems.isValid(input));
+
+		
+	}
 }
