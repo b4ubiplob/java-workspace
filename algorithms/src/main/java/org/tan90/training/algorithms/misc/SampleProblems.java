@@ -403,4 +403,25 @@ public class SampleProblems {
     }
 	
 	
+	public int singleNumber(int[] nums) {
+        Map<Integer, Integer> numsMap = new HashMap<>();
+        
+        for (int num : nums) {
+        	if (numsMap.containsKey(num)) {
+        		numsMap.put(num, numsMap.get(num) + 1);
+        	}
+        	else {
+        		numsMap.put(num, 1);
+        	}
+        }
+        
+        for (Map.Entry<Integer, Integer> entry : numsMap.entrySet()) {
+        	if (entry.getValue() == 1) {
+        		return entry.getKey();
+        	}
+        }
+        return nums[0];
+    }
+	
+	
 }

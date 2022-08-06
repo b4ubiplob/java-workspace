@@ -217,4 +217,22 @@ public class TestSampleProblems {
 		assertArrayEquals(new int[] {1,2,95}, nums);
 		
 	}
+	
+	@Test
+	public void testSingleNumber() {
+		int nums[] = {2,2,1};
+		SampleProblems sampleProblems = new SampleProblems();
+		
+		int result = sampleProblems.singleNumber(nums);
+		assertEquals(1, result);
+		
+		int[] nums1 = {4,1,2,1,2};
+		result = sampleProblems.singleNumber(nums1);
+		assertEquals(4, result);
+		
+		int[] nums2 = {1};
+		result = sampleProblems.singleNumber(nums2);
+		assertEquals(1, result);
+		
+	}
 }
