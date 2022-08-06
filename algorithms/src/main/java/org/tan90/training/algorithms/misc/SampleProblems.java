@@ -7,6 +7,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -381,6 +382,24 @@ public class SampleProblems {
         	}
         }
         return charStack.isEmpty();
+    }
+	
+	public int removeDuplicates(int[] nums) {
+		Set<Integer> intSet = new LinkedHashSet<>();
+		for (int i = 0; i< nums.length; i++) {
+			intSet.add(nums[i]);
+		}
+		
+		int i = 0;
+		for (int num : intSet) {
+			nums[i++] = num;
+		}
+		
+		for (; i< nums.length;i++) {
+			nums[i] = '_';
+		}
+		
+		return intSet.size();
     }
 	
 	

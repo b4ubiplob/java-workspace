@@ -1,5 +1,6 @@
 package org.tan90.training.algorithms.misc;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -202,6 +203,18 @@ public class TestSampleProblems {
 		input = "(]";
 		assertFalse(sampleProblems.isValid(input));
 
+		
+	}
+	
+	
+	@Test
+	public void testRemoveDuplicates() {
+		int[] nums = {1,1,2};
+		
+		SampleProblems sampleProblems = new SampleProblems();
+		int result = sampleProblems.removeDuplicates(nums);
+		assertEquals(result, 2);
+		assertArrayEquals(new int[] {1,2,95}, nums);
 		
 	}
 }
