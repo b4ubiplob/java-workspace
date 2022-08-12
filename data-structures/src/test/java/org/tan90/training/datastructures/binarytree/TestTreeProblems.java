@@ -54,4 +54,20 @@ public class TestTreeProblems {
 		
 	}
 
+	@Test
+	public void testMaxDepth() {
+		
+		TreeNode a1 = new TreeNode(3);
+		a1.left = new TreeNode(9);
+		
+		TreeNode b2 = new TreeNode(20);
+		a1.right = b2;
+		
+		b2.left = new TreeNode(15);
+		b2.right = new TreeNode(7);
+		
+		TreeProblems treeProblems = new TreeProblems();
+		int result = treeProblems.maxDepth(a1);
+		assertEquals(3, result);
+ 	}
 }
