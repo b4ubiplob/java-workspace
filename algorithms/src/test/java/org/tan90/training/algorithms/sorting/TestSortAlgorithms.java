@@ -23,5 +23,14 @@ public class TestSortAlgorithms {
     }
 
     
+    @Test
+    public void testMergeSort() {
+        int[] arr = {4, 7, 9, 2, 3, 1, 6};
+        SortAlgorithms.mergeSort(arr);
+        int[] expectedArr = {1, 2, 3, 4, 6, 7, 9};
+        assertArrayEquals(expectedArr,  arr);
+    }
+
+    
     
 }

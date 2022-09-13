@@ -45,5 +45,50 @@ public class SortAlgorithms {
 			}
 		}
 	}
+	
+	public static void mergeSort(int[] arr) {
+		if (arr.length < 2) {
+			return;
+		}
+		int length = arr.length;
+		int mid = length/2;
+		
+		int[] left = new int[mid];
+		int[] right = new int[length - mid];
+		
+		for (int i = 0; i < mid; i++) {
+			left[i] = arr[i];
+		}
+		
+		for (int i = mid ;i < length; i++) {
+			right[i - mid] = arr[i];
+		}
+		
+		mergeSort(left);
+		mergeSort(right);
+		merge(arr, left, right);
+	}
 
+	public static void merge(int[] arr, int[] left, int[] right) {
+		int leftLength = left.length;
+		int rightLength = right.length;
+		
+		int i = 0, j = 0, k=0;
+		
+		while (j < leftLength && k < rightLength)  {
+			if (left[j] < right[k]) {
+				arr[i++] = left[j++];
+			}
+			else {
+				arr[i++] = right[k++];
+			}
+		}
+		
+		while (j < leftLength) {
+			arr[i++] = left[j++];
+		}
+		while (k < rightLength) {
+			arr[i++] = right[k++];
+		}
+	}
 }
